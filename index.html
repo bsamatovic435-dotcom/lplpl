@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Тайное послание</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+body {
+  margin: 0;
+  background: #f4ecd8;
+  color: #3b2f2f;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 90%;
+  max-width: 420px;
+  background: #fdf6e3;
+  padding: 30px 25px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  animation: fadeIn 1.2s ease;
+}
+
+h1 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+button {
+  width: 100%;
+  margin-top: 18px;
+  padding: 12px;
+  font-size: 18px;
+  background: #7b4b3a;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #5e382b;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-text {
+  animation: fadeIn 1.5s ease;
+}
+
+.heart {
+  text-align: center;
+  font-size: 26px;
+  animation: pulse 1.5s infinite;
+  margin-top: 10px;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- Экран 1 -->
+  <div id="step1">
+    <h1>Послание</h1>
+    <p>
+      Если ты читаешь это, значит письмо нашло своего адресата.  
+      Ответь на несколько вопросов и узнай, что скрывается в конце…
+    </p>
+    <button onclick="nextStep(2)">Начать</button>
+  </div>
+
+  <!-- Вопрос 1 -->
+  <div id="step2" class="hidden">
+    <p><strong>Когда всё началось?</strong></p>
+    <button onclick="nextStep(3)">С одной встречи</button>
+    <button onclick="nextStep(3)">С одной улыбки</button>
+    <button onclick="nextStep(3)">С одного сообщения</button>
+  </div>
+
+  <!-- Вопрос 2 -->
+  <div id="step3" class="hidden">
+    <p><strong>Что делает нас «нами»?</strong></p>
+    <button onclick="nextStep(4)">Разговоры до ночи</button>
+    <button onclick="nextStep(4)">Смех без причины</button>
+    <button onclick="nextStep(4)">Чувство дома рядом</button>
+  </div>
+
+  <!-- Вопрос 3 -->
+  <div id="step4" class="hidden">
+    <p><strong>Как ты думаешь, что я чувствую к тебе?</strong></p>
+    <button onclick="nextStep(5)">Что-то особенное</button>
+    <button onclick="nextStep(5)">Чуть больше, чем слова</button>
+    <button onclick="nextStep(5)">То, что нельзя спрятать</button>
+  </div>
+
+  <!-- Вопрос 4 -->
+  <div id="step5" class="hidden">
+    <p><strong>Готова ли ты узнать, что будет дальше?</strong></p>
+    <button onclick="nextStep(6)">Да</button>
+  </div>
+
+  <!-- Финал -->
+  <div id="step6" class="hidden fade-text">
+    <p>
+      Этот квест — лишь начало.<br><br>
+      Совсем скоро ты получишь ещё одно письмо.<br>
+      В нём будет приглашение…<br><br>
+      На особенное свидание.
+    </p>
+    <div class="heart">❤</div>
+  </div>
+
+</div>
+
+<script>
+function nextStep(step) {
+  for (let i = 1; i <= 6; i++) {
+    document.getElementById('step' + i).classList.add('hidden');
+  }
+  document.getElementById('step' + step).classList.remove('hidden');
+}
+</script>
+
+</body>
+</html>
